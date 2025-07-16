@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.linear_model import LogisticRegression
 from datetime import datetime
 
-st.title("Rain Prediction by Date (Demo)")
+st.title("Rain Prediction by Date")
 
 def generate_features_from_date(date_input):
     date_ord = date_input.toordinal()
@@ -50,7 +50,7 @@ def train_model():
 
 model = train_model()
 
-st.write("Select a date to predict rain (synthetic demo):")
+st.write("Select a date to predict rain :")
 date_input = st.date_input("Date", value=datetime.today())
 
 if st.button("Predict Rain"):
@@ -59,4 +59,4 @@ if st.button("Predict Rain"):
     prob = model.predict_proba(features)[0][1]
     st.write("**Generated Weather Features:**")
     st.write(features)
-    st.success(f"Rain prediction for {date_input}: {'Yes 🌧️' if prediction==1 else 'No ☀️'} (Probability: {prob:.2f})")
+    st.success(f"Rain prediction for {date_input}: {'Yes' if prediction==1 else 'No'} (Probability: {prob:.2f})")
